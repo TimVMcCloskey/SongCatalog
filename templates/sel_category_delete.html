@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="wrapper">
+  <nav>
+    <ul>
+      <li>
+        <a href = {{url_for('categoriesAll')}}>Home</a>
+      </li>
+      <li>
+        <a href = {{url_for('categoryNew')}}>Add Category</a>
+      </li>
+      <li>
+        <a href = {{url_for('selectCategoryEdit')}}>Edit Category</a>
+      </li>
+      <li>
+        <a href = {{url_for('selectCategoryDelete')}}>Delete Category</a>
+      </li>
+      <li>
+        <a href = {{url_for('disconnect')}}>Logout</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<main>
+	<h3>Select Category To Delete</h3>
+	<br>
+
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<ul>
+				{% for message in messages %}
+					<li> <strong> {{ message }} </strong> </li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	{% endwith %}
+
+	<ul>
+  	{% for i in categories %}
+    	<li>
+    		<a href = {{url_for('categoryDelete', category_id=i.id)}}>{{i.name}}</a>
+    	</li>
+  	{% endfor %}
+	</ul>
+</main>
+
+{% endblock %}

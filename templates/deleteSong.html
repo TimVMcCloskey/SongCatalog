@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="wrapper">
+  <nav>
+    <ul>
+      <li>
+        <a href = {{url_for('categoriesAll')}}>Home</a>
+      </li>
+      <li>
+        <a href = {{url_for('categoryNew')}}>Add Category</a>
+      </li>
+      <li>
+        <a href = {{url_for('selectCategoryEdit')}}>Edit Category</a>
+      </li>
+      <li>
+        <a href = {{url_for('selectCategoryDelete')}}>Delete Category</a>
+      </li>
+      <li>
+        <a href = {{url_for('disconnect')}}>Logout</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<main>
+  <form action="{{url_for('songDelete',category_id=category.id, song_id=song.id)}}" method = 'post'>
+    <table>
+      <caption>Are you sure you want to delete<br> {{song.title}}?</caption>
+      <tr>
+        <td>
+          <input type='submit', value = 'Delete'>
+        </td>
+        <td>
+          <input type="button" value='Cancel'
+          onclick="location.href='http://localhost:5000/category/{{category.id}}/songs';"/>
+        </td>
+      </tr>
+    </table>
+  </form>
+</main>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="wrapper">
+  <nav>
+    <ul>
+      <li>
+        <a href = {{url_for('categoriesAll')}}>Home</a>
+      </li>
+      <li>
+        <a href = {{url_for('categoryNew')}}>Add Category</a>
+      </li>
+      <li>
+        <a href = {{url_for('selectCategoryEdit')}}>Edit Category</a>
+      </li>
+      <li>
+        <a href = {{url_for('selectCategoryDelete')}}>Delete Category</a>
+      </li>
+      <li>
+        <a href = {{url_for('disconnect')}}>Logout</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<main>
+  <form method='POST' enctype='multipart/form-data'
+    action="{{ url_for('categoryEdit', category_id=category.id)}}">
+  <caption>Edit {{category.name}} Category </caption>
+
+    <table>
+      <tr>
+        <td>
+          Name:
+        </td>
+        <td>
+          <input type = 'text' name = 'newName'  size="40" placeholder = "{{category.name}}">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type='submit' value='Edit'>
+        </td>
+        <td>
+          <input type="button" value='Cancel'
+            onclick="location.href='http://localhost:5000/categories/';"/>
+        </td>
+      </tr>
+    </table>
+  </form>
+</main>
+
+{% endblock %}

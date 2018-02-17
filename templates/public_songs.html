@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="wrapper">
+  <nav>
+    <ul>
+      <li>
+      	<a href = {{url_for('categoriesAll')}}>Home</a>
+      </li>
+      <li>
+      	<a href = {{url_for('showLogin')}}>Login</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<main>
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<ul>
+				{% for message in messages %}
+					<li> <strong> {{ message }} </strong> </li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	{% endwith %}
+
+  <table>
+    <caption>
+      {{ category.name }} Songs
+    </caption>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Artist</th>
+    </tr>
+
+    {% for i in songs %}
+      <tr>
+        <td>
+          <a href = {{i.link}}" target="_blank">
+            <img src="/static/youtube-clipart-transparent-2.png" width="72" height="46" border="0"/>
+          </a>
+        </td>
+        <td>{{i.title}} </td>
+        <td>{{i.artist}}</td>
+      </tr>
+    {% endfor %}
+  </table>
+</main>
+
+{% endblock %}

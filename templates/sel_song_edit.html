@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="wrapper">
+  <nav>
+    <ul>
+      <li><a href = {{url_for('categoriesAll')}}>Home</a></li>
+      <li>
+        <a href = {{url_for('songNew', category_id=category.id)}}>Add Song</a>
+      </li>
+      <li>
+        <a href = {{url_for('selectSongEdit', category_id=category.id)}}>Edit Song</a>
+      </li>
+      <li>
+        <a href = {{url_for('selectSongDelete', category_id=category.id)}}>Delete Song</a>
+      </li>
+      <li><a href = {{url_for('disconnect')}}>Logout</a></li>
+    </ul>
+  </nav>
+</div>
+
+<main>
+  <h3>Select Song To Edit</h3>
+  <br>
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul>
+			 {% for message in messages %}
+			   <li> <strong> {{ message }} </strong> </li>
+			 {% endfor %}
+		  </ul>
+	 {% endif %}
+  {% endwith %}
+
+  <ul>
+    {% for i in songs %}
+      <li>
+        <a href = {{url_for('songEdit', category_id=category.id, song_id=i.id)}}>{{i.title}}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</main>
+
+{% endblock %}

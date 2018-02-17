@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="wrapper">
+  <nav>
+    <ul>
+      <li><a href = {{url_for('categoriesAll')}}>Home</a></li>
+      <li>
+        <a href = {{url_for('songNew', category_id=category.id)}}>Add Song</a>
+      </li>
+      <li>
+        <a href = {{url_for('selectSongEdit', category_id=category.id)}}>Edit Song</a>
+      </li>
+      <li>
+        <a href = {{url_for('selectSongDelete', category_id=category.id)}}>Delete Song</a>
+      </li>
+      <li><a href = {{url_for('disconnect')}}>Logout</a></li>
+    </ul>
+  </nav>
+</div>
+
+<main>
+  <form method='POST' enctype='multipart/form-data'
+    action="{{ url_for('songEdit', category_id=category.id, song_id=song.id)}}">
+
+    <table>
+      <caption>Edit Song</caption>
+
+      <tr>
+        <td>
+          Title:
+        </td>
+        <td>
+          <input type = 'text' name = 'newTitle' size="40" placeholder = "{{song.title}}">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Artist:
+        </td>
+        <td>
+          <input type = 'text' name = 'newArtist' size="40" placeholder = "{{song.artist}}">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Youtube Link:
+        </td>
+        <td>
+          <input type = 'text' name = 'newLink' size="40" placeholder = "{{song.link}}">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type='submit' value='Edit'>
+        </td>
+        <td>
+          <input type="button" value='Cancel'
+            onclick="location.href='http://localhost:5000/category/{{category.id}}/songs/';"/>
+        </td>
+      </tr>
+    </table>
+  </form>
+</main>
+
+{% endblock %}
