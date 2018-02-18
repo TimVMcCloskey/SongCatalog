@@ -396,6 +396,31 @@ to delete songs.');}</script><body onload='myFunction()''>"
 ######################################
 
 
+######################################
+
+# /JSON
+
+######################################
+
+@app.route('/JSON')
+def JSON():
+    categories = session.query(Category).all()
+    cat = []
+
+    for i in categories:
+        cat_dict = i.serialize
+        song = []
+        songs = session.query(Song).filter_by(category_id=i.id).all()
+
+        for j in songs:
+            song.append(j.serialize)
+            cat_dict.update({"Song": song})
+
+        cat.append(cat_dict)
+
+    return jsonify(Category=cat)
+
+
 ####################################
 
 # /categories/JSON
