@@ -1,5 +1,5 @@
 # SongCatalog
-This is the Item Catalog Application project for the Udacity FSND Course.
+This is the Item Catalog Application project for the Udacity Full Stack Nanodegree Course.
 ## About
 This project is a RESTfull web application that catalogs songs into categories. The categories can be genres or any other category that a logged in user wants to define. The application allows logged in visters to add, edit, and delete their own categories and songs. Visiters can log in if they have a google+ or facebook account. 
 
