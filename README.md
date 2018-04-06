@@ -9,7 +9,7 @@ Install Vagrant http://vagrantup.com and VirtualBox http://www.virtualbox.org.
 
 Clone the fsnd repository from Udacity at GitHub https://github.com/udacity/fullstack-nanodegree-vm.
 
-Go to the FSND-Virutual-Machine/vagrant/catalog directory and clone this repo or download and place zip here.
+Go to the FSND-Virtual-Machine/vagrant/catalog directory and clone this repo or download and place zip here.
 
 ## Running
 From a terminal go to the FSND-Virutual-Machine directory and run - vagrant up; vagrant ssh.
