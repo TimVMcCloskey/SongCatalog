@@ -133,10 +133,12 @@ add songs.');}</script><body onload='myFunction()''>"
 
 #########################################
 
+# /
 # /categories/ - shows all categories
 
 #########################################
 
+@app.route('/')
 @app.route('/categories/')
 def categoriesAll():
     categories = session.query(Category).all()
